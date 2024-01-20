@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Notes</title>
+    
+    <!-- Add the icon for the tab -->
+    <link rel="icon" type="image/gif" href="https://fonts.gstatic.com/s/e/notoemoji/latest/2744_fe0f/512.gif">
+    <link rel="icon" type="image/webp" href="https://fonts.gstatic.com/s/e/notoemoji/latest/2744_fe0f/512.webp">
+    
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: "Kristen ITC", Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        #noteList, #noteForm {
+            width: 100%;
+            margin: 20px;
+        }
+
+        #noteList {
+            max-height: 200px;
+            overflow-y: auto;
+            text-align: center;
+        }
+
+        h1, ul, input, button {
+            font-size: 2em;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        input, button {
+            width: 100%;
+            margin-bottom: 10px;
+            font-family: "Kristen ITC", Arial, sans-serif;
+            text-align: center;
+        }
+
+        .btn-gradient-border {
+            color: rgba(var(--text-color));
+            border: 2px double transparent;
+            background-image: linear-gradient(rgb(13, 14, 33), rgb(13, 14, 33)), radial-gradient(circle at left top, rgb(1, 110, 218), rgb(217, 0, 192));
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+        }
+
+        #fullscreenButton, #instructionsButton {
+            position: absolute;
+            font-size: 1em;
+            width: auto;
+        }
+
+        #fullscreenButton {
+            top: 10px;
+            right: 10px;
+        }
+
+        #instructionsButton {
+            top: 40px;
+            right: 10px;
+            cursor: pointer;
+        }
+
+        #instructionsTooltip {
+            position: absolute;
+            top: 60px;
+            right: 10px;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            display: none;
+            border-radius: 5px;
+        }
+
+        #instructionsButton:hover + #instructionsTooltip {
+            display: block;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Notes</h1>
+
+    <ul id="noteList">
+        <!-- Existing notes will be added here dynamically -->
+    </ul>
+
+    <form id="noteForm" onsubmit="addNote(); return false;">
+        <label for="note">Add a note:</label>
+        <input type="text" id="note" name="note" required>
+        <button type="submit" class="btn-gradient-border">Add</button>
+        <button id="thanksButton" onclick="sayThanks()" class="btn-gradient-border">
+           thanks
+        </button>
+    </form>
+
+    <button id="fullscreenButton" onclick="enterFullscreen()">Fullscreen</button>
+    <button id="instructionsButton">Instructions</button>
+    <div id="instructionsTooltip">
+        <p>1. Press Enter to add to the list.</p>
+        <p>2. Press PgDn to say thanks.</p>
+    </div>
+
+    <script>
+        function addNote() {
+            var noteInput = document.getElementById('note');
+            var noteText = noteInput.value.trim();
+    
+            if (noteText !== '') {
+                var noteList = document.getElementById('noteList');
+                var listItem = document.createElement('li');
+                listItem.textContent = noteText;
+                noteList.appendChild(listItem);
+    
+                // Clear the input field
+                noteInput.value = '';
+    
+                // Scroll to the bottom to keep the input centered
+                noteList.scrollTop = noteList.scrollHeight;
+            }
+        }
+    
+        function enterFullscreen() {
+            var elem = document.documentElement;
+    
+            if (document.fullscreenElement) {
+                document.exitFullscreen();
+            } else {
+                elem.requestFullscreen();
+            }
+        }
+    
+        function sayThanks() {
+            var noteInput = document.getElementById('note');
+            var name = noteInput.value.trim();
+    
+            if (name !== '') {
+                var noteList = document.getElementById('noteList');
+                var listItem = document.createElement('li');
+                listItem.innerHTML = `
+                    <picture>
+                        <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f970/512.webp" type="image/webp">
+                        <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f970/512.gif" alt="🥰" width="32" height="32">
+                    </picture>
+                    <picture>
+                        <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f496/512.webp" type="image/webp">
+                        <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f496/512.gif" alt="💖" width="32" height="32">
+                    </picture> ${name}    <picture>
+                        <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f496/512.webp" type="image/webp">
+                        <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f496/512.gif" alt="💖" width="32" height="32">
+                    </picture>  
+                    <picture>
+                        <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f970/512.webp" type="image/webp">
+                        <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f970/512.gif" alt="🥰" width="32" height="32">
+                    </picture>
+                `;
+                noteList.appendChild(listItem);
+    
+                // Clear the input field
+                noteInput.value = '';
+    
+                // Scroll to the bottom to keep the input centered
+                noteList.scrollTop = noteList.scrollHeight;
+            }
+        }
+    
+        // Add event listener for 'keydown' event
+        document.addEventListener('keydown', function(event) {
+            // Check if the pressed key is the "Page Down" key
+            if (event.key === "PageDown") {
+                // Trigger the "Thanks" function
+                sayThanks();
+            }
+        });
+    </script>
+</body>
+</html>

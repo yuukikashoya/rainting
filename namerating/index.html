@@ -96,23 +96,39 @@
 
         #instructionsButton:hover + #instructionsTooltip {
             display: block;
-            background-color: black;
+            background-color: rgba(0, 0, 0, 0.5);
         }
     </style>
 </head>
 <body>
-    <h1>My Notes</h1>
+    <h2>Like<picture>
+        <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/2764_fe0f/512.webp" type="image/webp">
+        <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2764_fe0f/512.gif" alt="❤" width="32" height="32">
+      </picture> and Follow<picture>
+        <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f514/512.webp" type="image/webp">
+        <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f514/512.gif" alt="🔔" width="32" height="32">
+      </picture></h2>
+    <h1>My List<picture>
+        <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/270f_fe0f/512.webp" type="image/webp">
+        <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/270f_fe0f/512.gif" alt="✏" width="32" height="32">
+      </picture></h1>
 
     <ul id="noteList">
         <!-- Existing notes will be added here dynamically -->
     </ul>
 
     <form id="noteForm" onsubmit="addNote(); return false;">
-        <label for="note">Add a note:</label>
+        <label for="note">Add Name:</label>
         <input type="text" id="note" name="note" required>
-        <button type="submit" class="btn-gradient-border">Add</button>
+        <button type="submit" class="btn-gradient-border">Add<picture>
+            <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/2795/512.webp" type="image/webp">
+            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2795/512.gif" alt="➕" width="32" height="32">
+          </picture></button>
         <button id="thanksButton" onclick="sayThanks()" class="btn-gradient-border">
-           Thanks
+           Thanks<picture>
+            <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f49e/512.webp" type="image/webp">
+            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f49e/512.gif" alt="💞" width="32" height="32">
+          </picture>
         </button>
     </form>
 

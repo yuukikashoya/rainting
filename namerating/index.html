@@ -10,21 +10,24 @@
     <link rel="icon" type="image/webp" href="https://fonts.gstatic.com/s/e/notoemoji/latest/2744_fe0f/512.webp">
     
     <style>
-        body {
-            background-color: black;
-            color: white;
-            font-family: "Kristen ITC", Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            position: relative;
-            max-width: 600px;
-            width: 100%;
-            margin: 0 auto;
-        }
+ body {
+    background-image: url('https://64.media.tumblr.com/9dab5edc99c814adfd6b9263e3345cac/d23d6a5bc64cf508-81/s640x960/97bbc0464d75caa9109c0f2e683b87e73f1a8ea8.gifv');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: white;
+    font-family: "Kristen ITC", Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    position: relative;
+    max-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+}
 
         #noteList, #noteForm {
             width: 100%;
@@ -32,10 +35,13 @@
         }
 
         #noteList {
-            max-height: 200px;
-            overflow-y: auto;
-            text-align: center;
-        }
+    max-height: 200px;
+    overflow-y: auto;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5); /* Dark background color */
+    padding: 10px; /* Add padding for better visibility */
+}
+
 
         h1, ul, input, button {
             font-size: 2em;
@@ -189,5 +195,6 @@
             }
         });
     </script>
+    
 </body>
 </html>

@@ -1,50 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Notes</title>
-    
+    <title>Rainting</title>
+
     <!-- Add the icon for the tab -->
     <link rel="icon" type="image/gif" href="https://fonts.gstatic.com/s/e/notoemoji/latest/2744_fe0f/512.gif">
     <link rel="icon" type="image/webp" href="https://fonts.gstatic.com/s/e/notoemoji/latest/2744_fe0f/512.webp">
-    
-    <style>
- body {
-    background-image: url('https://64.media.tumblr.com/9dab5edc99c814adfd6b9263e3345cac/d23d6a5bc64cf508-81/s640x960/97bbc0464d75caa9109c0f2e683b87e73f1a8ea8.gifv');
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    color: white;
-    font-family: "Kristen ITC", Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    margin: 0;
-    position: relative;
-    max-width: 600px;
-    width: 100%;
-    margin: 0 auto;
-}
 
-        #noteList, #noteForm {
+    <style>
+      body {
+            background-image: url('https://i.pinimg.com/originals/21/21/03/2121033fcf53da6b9c9bf1591a4aa387.gif');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: black;
+            font-family: "Kristen ITC", Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start; /* Align everything to the left */
+            justify-content: center;
+            height: 100%;
+            margin: 0;
+            position: relative;
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 20px; /* Add padding for better visibility */
+        }
+
+        #noteList,
+        #noteForm {
             width: 100%;
             margin: 20px;
         }
 
         #noteList {
-    max-height: 200px;
-    overflow-y: auto;
-    text-align: center;
-    background-color: rgba(0, 0, 0, 0.5); /* Dark background color */
-    padding: 10px; /* Add padding for better visibility */
-}
+            max-height: 200px;
+            overflow-y: auto;
+            text-align: center;
+            background-color: rgba(255, 255, 255, 0.5);
+            /* Dark background color */
+            padding: 10px;
+            /* Add padding for better visibility */
+        }
 
-
-        h1, ul, input, button {
+        h1,
+        ul,
+        input,
+        button {
             font-size: 2em;
+        }
+
+        h1 span[contenteditable="true"] {
+            border-bottom: 2px solid white;
+            padding-bottom: 5px;
+            cursor: text;
+            outline: none;
         }
 
         ul {
@@ -52,7 +66,8 @@
             padding: 0;
         }
 
-        input, button {
+        input,
+        button {
             width: 100%;
             margin-bottom: 10px;
             font-family: "Kristen ITC", Arial, sans-serif;
@@ -60,14 +75,16 @@
         }
 
         .btn-gradient-border {
-            color: rgba(var(--text-color));
+            color: white;
             border: 2px double transparent;
-            background-image: linear-gradient(rgb(13, 14, 33), rgb(13, 14, 33)), radial-gradient(circle at left top, rgb(1, 110, 218), rgb(217, 0, 192));
+            background-image: 
+                radial-gradient(circle at left top, rgb(1, 110, 218), rgb(217, 0, 192));
             background-origin: border-box;
             background-clip: padding-box, border-box;
         }
 
-        #fullscreenButton, #instructionsButton {
+        #fullscreenButton,
+        #instructionsButton {
             position: absolute;
             font-size: 1em;
             width: auto;
@@ -94,12 +111,13 @@
             border-radius: 5px;
         }
 
-        #instructionsButton:hover + #instructionsTooltip {
+        #instructionsButton:hover+#instructionsTooltip {
             display: block;
             background-color: rgba(0, 0, 0, 0.5);
         }
     </style>
 </head>
+
 <body>
     <h2>Like<picture>
         <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/2764_fe0f/512.webp" type="image/webp">
@@ -108,10 +126,13 @@
         <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f514/512.webp" type="image/webp">
         <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f514/512.gif" alt="🔔" width="32" height="32">
       </picture></h2>
-    <h1>My List<picture>
-        <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/270f_fe0f/512.webp" type="image/webp">
-        <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/270f_fe0f/512.gif" alt="✏" width="32" height="32">
-      </picture></h1>
+    <h1>
+        <span contenteditable="true" spellcheck="false">My List</span>
+        <picture>
+            <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/270f_fe0f/512.webp" type="image/webp">
+            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/270f_fe0f/512.gif" alt="✏" width="32" height="32">
+        </picture>
+    </h1>
 
     <ul id="noteList">
         <!-- Existing notes will be added here dynamically -->
@@ -120,15 +141,18 @@
     <form id="noteForm" onsubmit="addNote(); return false;">
         <label for="note">Add Name:</label>
         <input type="text" id="note" name="note" required>
-        <button type="submit" class="btn-gradient-border">Add<picture>
-            <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/2795/512.webp" type="image/webp">
-            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2795/512.gif" alt="➕" width="32" height="32">
-          </picture></button>
+        <button type="submit" class="btn-gradient-border">Add
+            <picture>
+                <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/2795/512.webp" type="image/webp">
+                <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/2795/512.gif" alt="➕" width="32" height="32">
+            </picture>
+        </button>
         <button id="thanksButton" onclick="sayThanks()" class="btn-gradient-border">
-           Thanks<picture>
-            <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f49e/512.webp" type="image/webp">
-            <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f49e/512.gif" alt="💞" width="32" height="32">
-          </picture>
+            Thanks
+            <picture>
+                <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f49e/512.webp" type="image/webp">
+                <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f49e/512.gif" alt="💞" width="32" height="32">
+            </picture>
         </button>
     </form>
 
@@ -140,70 +164,82 @@
     </div>
 
     <script>
-        function addNote() {
-            var noteInput = document.getElementById('note');
-            var noteText = noteInput.value.trim();
-    
-            if (noteText !== '') {
-                var noteList = document.getElementById('noteList');
-                var listItem = document.createElement('li');
-                listItem.textContent = noteText;
-                noteList.appendChild(listItem);
-    
-                // Clear the input field
-                noteInput.value = '';
-    
-                // Scroll to the bottom to keep the input centered
-                noteList.scrollTop = noteList.scrollHeight;
-            }
-        }
-    
+function addNote() {
+    var noteInput = document.getElementById('note');
+    var noteText = noteInput.value.trim();
+
+    if (noteText !== '') {
+        var noteList = document.getElementById('noteList');
+        var listItem = document.createElement('li');
+
+        listItem.innerHTML = `
+            <picture>
+                <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f340/512.webp" type="image/webp">
+                <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f340/512.gif" alt="🍀" width="32" height="32">
+            </picture>
+            ${noteText}`;
+
+        noteList.appendChild(listItem);
+
+        // Clear the input field
+        noteInput.value = '';
+
+        // Scroll to the bottom to keep the input centered
+        noteList.scrollTop = noteList.scrollHeight;
+    }
+}
+
+
         function enterFullscreen() {
             var elem = document.documentElement;
-    
+
             if (document.fullscreenElement) {
                 document.exitFullscreen();
             } else {
                 elem.requestFullscreen();
             }
         }
-    
+
         function sayThanks() {
             var noteInput = document.getElementById('note');
             var name = noteInput.value.trim();
-    
+
             if (name !== '') {
                 var noteList = document.getElementById('noteList');
                 var listItem = document.createElement('li');
                 listItem.innerHTML = `
                     <picture>
                         <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f970/512.webp" type="image/webp">
-                        <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f970/512.gif" alt="🥰" width="32" height="32">
+                        <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f970/512.gif" alt="🥰" width="32"
+                            height="32">
                     </picture>
                     <picture>
                         <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f496/512.webp" type="image/webp">
-                        <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f496/512.gif" alt="💖" width="32" height="32">
+                        <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f496/512.gif" alt="💖" width="32"
+                            height="32">
                     </picture> ${name}    <picture>
                         <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f496/512.webp" type="image/webp">
-                        <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f496/512.gif" alt="💖" width="32" height="32">
+                        <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f496/512.gif" alt="💖" width="32"
+                            height="32">
                     </picture>  
                     <picture>
                         <source srcset="https://fonts.gstatic.com/s/e/notoemoji/latest/1f970/512.webp" type="image/webp">
-                        <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f970/512.gif" alt="🥰" width="32" height="32">
+                        <img src="https://fonts.gstatic.com/s/e/notoemoji/latest/1f970/512.gif" alt="🥰" width="32"
+                            height="32">
                     </picture>
                 `;
                 noteList.appendChild(listItem);
-    
+
                 // Clear the input field
                 noteInput.value = '';
-    
+
                 // Scroll to the bottom to keep the input centered
                 noteList.scrollTop = noteList.scrollHeight;
             }
         }
-    
+
         // Add event listener for 'keydown' event
-        document.addEventListener('keydown', function(event) {
+        document.addEventListener('keydown', function (event) {
             // Check if the pressed key is the "Page Down" key
             if (event.key === "PageDown") {
                 // Trigger the "Thanks" function
@@ -211,6 +247,7 @@
             }
         });
     </script>
-    
+
 </body>
+
 </html>
